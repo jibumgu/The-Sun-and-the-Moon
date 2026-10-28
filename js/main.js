@@ -3,7 +3,7 @@ const VW = 1000, VH = 700;
 const HORIZON = 470, FLOOR = 640, STAGE_Y = 600, FEET = 618;
 const GRAVITY = 0.42, DAMP = 0.985, ITER = 8, STEP = 1 / 60;
 const GRAB_R = 26, TOUCH_R = 22, WEAR_MAX = 100, ANCHOR_Y = 20;
-const CURTAIN_TOP = -120, CURTAIN_L = -200, CURTAIN_R = 1200;
+const CURTAIN_TOP = -120, CURTAIN_L = -4000, CURTAIN_R = 5000;  // 넓은 화면에서도 좌우 끝이 비지 않도록 크게 잡음
 const INK = '#3a2616', TAU = Math.PI * 2;
 
 // 값은 [낮, 밤]
@@ -80,7 +80,7 @@ function curtainBottom(p) {
 }
 
 const STARS = Array.from({ length: 90 }, () => ({
-  x: Math.random() * VW, y: Math.random() * 420, r: 0.5 + Math.random() * 1.7, ph: Math.random() * TAU,
+  x: -600 + Math.random() * 2200, y: Math.random() * 420, r: 0.5 + Math.random() * 1.7, ph: Math.random() * TAU,
 }));
 
 // ---- 동아줄 세트: [종류, x 위치, 길이] ----
@@ -210,10 +210,10 @@ function updateEffects() {
 function strokeInk(w = 3) { ctx.strokeStyle = INK; ctx.lineWidth = w; ctx.stroke(); }
 function rr(x, y, w, h, r) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); }
 function hillPath(baseY, amp, ph, bottom = 3000) {
-  ctx.beginPath(); ctx.moveTo(-1500, bottom);
-  for (let x = -1500; x <= 2500; x += 25)
+  ctx.beginPath(); ctx.moveTo(-4000, bottom);
+  for (let x = -4000; x <= 5000; x += 25)
     ctx.lineTo(x, baseY - Math.sin(x * 0.007 + ph) * amp - Math.sin(x * 0.019 + ph * 2) * amp * 0.35);
-  ctx.lineTo(2500, bottom); ctx.closePath();
+  ctx.lineTo(5000, bottom); ctx.closePath();
 }
 function face() {
   ctx.fillStyle = INK;
@@ -374,7 +374,7 @@ function drawFront(n) {
   hillPath(608, 6, 4);
   ctx.fillStyle = vGrad('grassTop', 'grassBot', n, 600, 700); ctx.fill(); strokeInk(3);
   ctx.lineWidth = 2; ctx.strokeStyle = INK;
-  for (let x = -1500; x < 2500; x += 19) {
+  for (let x = -4000; x < 5000; x += 19) {
     const h = 16 + (Math.sin(x * 0.37) * 0.5 + 0.5) * 18;
     const lean = Math.sin(x * 1.3) * 6;
     ctx.fillStyle = col('canopy', n);
