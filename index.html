@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>해님달님</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="c" aria-label="해님달님 동아줄 인터랙티브 장면"></canvas>
+<div class="scroll-space" aria-hidden="true"></div>
+
+<div class="title">해님 달님
+  <small>스크롤하면 해님에서 달님으로 · 썩은 동아줄은 만질수록 끊어져요</small>
+</div>
+<div class="hud">
+  <div class="panel">
+    <span id="state">해님 ☀️</span>
+    <input id="scroll" type="range" min="0" max="1000" value="0" aria-label="해님에서 달님으로 이동">
+    <button id="reset" type="button">동아줄 복원</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
